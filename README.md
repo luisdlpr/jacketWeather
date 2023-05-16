@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# quickWeather (Work in Progress)
+This is a extreme minimalist weather application that simply gives advice on 
+whether a jacket is needed or not. More information can be shown on request such
+as temperature.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Location is taken from the browser and weather forecast is taken using the
+AccuWeather API. The given API key only allows for 50 calls/day
 
 ## Available Scripts
 
