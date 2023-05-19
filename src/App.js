@@ -1,36 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import WeatherInfo from './components/WeatherInfo';
 
 const API_KEY = 'QIF3hYO4FwSOVpOvsgyAzfXd2002jGgU';
 const BASE_URL = "http://dataservice.accuweather.com"
 const URL_LOCATION = BASE_URL + "/locations/v1/cities/geoposition/search?";
-
-function WeatherInfo({ weatherInfo }) {
-  console.log(weatherInfo.precipitation)
-  return (
-    <div>
-      {
-        (weatherInfo.precipitation)
-          ? <div>There could be rain</div>
-          : <div>No Precipitation</div>
-      }
-      <Temperature temperature={weatherInfo.temperature} unit={'Imperial'} />
-    </div>
-  );
-}
-
-function Temperature({ temperature, unit }) {
-  return (
-    <div>
-      {
-        (unit == 'Imperial') ?
-          <div> {temperature.Imperial.Value} F </div> :
-          <div> {temperature.Metric.Value} C </div>
-      }
-    </div>
-  );
-}
 
 function App() {
   const [accessCoords, setCoords] = React.useState(
@@ -106,8 +81,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <div>({accessCoords.lat}, {accessCoords.lng})</div>
         {(weatherDetails.precipitation == null) ? <div></div> : <WeatherInfo weatherInfo={weatherDetails} />}
         <button onClick={getLocation}>click</button>
       </header>
