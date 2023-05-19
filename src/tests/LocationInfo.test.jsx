@@ -1,8 +1,6 @@
 // Imports
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import '@testing-library/jest-dom/matchers';
 import LocationInfo from '../components/LocationInfo.jsx';
 
 describe('Content Test', () => {
