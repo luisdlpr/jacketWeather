@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import WeatherInfo from './components/WeatherInfo';
+import LocationInfo from './components/LocationInfo';
 
 const API_KEY = 'QIF3hYO4FwSOVpOvsgyAzfXd2002jGgU';
 const BASE_URL = "http://dataservice.accuweather.com"
@@ -81,7 +81,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {(weatherDetails.precipitation == null) ? <div></div> : <WeatherInfo weatherInfo={weatherDetails} />}
+        {(locationDetails == null)
+          ? <div>Click to load weather for current location</div>
+          : <LocationInfo locationInfo={locationDetails} />}
+        {(weatherDetails.precipitation == null)
+          ? <div></div>
+          : <WeatherInfo weatherInfo={weatherDetails} />}
         <button onClick={getLocation}>click</button>
       </header>
     </div>
