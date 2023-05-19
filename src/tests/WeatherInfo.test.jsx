@@ -1,6 +1,6 @@
 // Imports
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import WeatherInfo from '../components/WeatherInfo.jsx';
 
 describe('Simple Mode Content Tests', () => {
@@ -23,7 +23,7 @@ describe('Simple Mode Content Tests', () => {
     }
 
     render (
-      <WeatherInfo weatherInfo={mockWeatherInfo} detail={false} unit={'Metric'} />
+      <WeatherInfo weatherInfo={mockWeatherInfo} detail={false} />
     )
 
     expect(screen.getByText("Wear a rain jacket"))
@@ -49,7 +49,7 @@ describe('Simple Mode Content Tests', () => {
     }
 
     render (
-      <WeatherInfo weatherInfo={mockWeatherInfo} detail={false} unit={'Metric'}/>
+      <WeatherInfo weatherInfo={mockWeatherInfo} detail={false} />
     )
 
     expect(screen.getByText("Wear a warm rain jacket"))
@@ -75,7 +75,7 @@ describe('Simple Mode Content Tests', () => {
     }
 
     render (
-      <WeatherInfo weatherInfo={mockWeatherInfo} detail={false} unit={'Metric'}/>
+      <WeatherInfo weatherInfo={mockWeatherInfo} detail={false} />
     )
 
     expect(screen.getByText("No need for a jacket"))
@@ -101,7 +101,7 @@ describe('Simple Mode Content Tests', () => {
     }
 
     render (
-      <WeatherInfo weatherInfo={mockWeatherInfo} detail={false} unit={'Metric'}/>
+      <WeatherInfo weatherInfo={mockWeatherInfo} detail={false} />
     )
 
     expect(screen.getByText("Wear a warm jacket"))
@@ -129,7 +129,7 @@ describe('Detailed Mode Content Tests', () => {
     }
 
     render (
-      <WeatherInfo weatherInfo={mockWeatherInfo} detail={true} unit={'Metric'}/>
+      <WeatherInfo weatherInfo={mockWeatherInfo} detail={true} />
     )
 
     expect(screen.getByText("Precipitation"))
@@ -155,7 +155,7 @@ describe('Detailed Mode Content Tests', () => {
     }
 
     render (
-      <WeatherInfo weatherInfo={mockWeatherInfo} detail={true} unit={'Metric'}/>
+      <WeatherInfo weatherInfo={mockWeatherInfo} detail={true} />
     )
 
     expect(screen.getByText("No Precipitation"))
@@ -181,8 +181,10 @@ describe('Detailed Mode Content Tests', () => {
     }
 
     render (
-      <WeatherInfo weatherInfo={mockWeatherInfo} detail={true} unit={'Imperial'}/>
+      <WeatherInfo weatherInfo={mockWeatherInfo} detail={true} />
     )
+
+    fireEvent.click(screen.getByRole('unit-button'))
 
     expect(screen.getByText("86 F"))
       .toBeInTheDocument();
@@ -207,7 +209,7 @@ describe('Detailed Mode Content Tests', () => {
     }
 
     render (
-      <WeatherInfo weatherInfo={mockWeatherInfo} detail={true} unit={'Metric'}/>
+      <WeatherInfo weatherInfo={mockWeatherInfo} detail={true} />
     )
 
     expect(screen.getByText("10 C"))
@@ -233,7 +235,7 @@ describe('Detailed Mode Content Tests', () => {
     }
 
     render (
-      <WeatherInfo weatherInfo={mockWeatherInfo} detail={true} unit={'Metric'}/>
+      <WeatherInfo weatherInfo={mockWeatherInfo} detail={true} />
     )
 
     expect(screen.getByText("test"))

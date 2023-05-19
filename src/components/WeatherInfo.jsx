@@ -41,7 +41,7 @@ function WeatherInfo({ weatherInfo, detail }) {
         (detail) 
         ? <div>
             <DetailedWeatherInfo weatherInfo={weatherInfo} unit={toggleUnit} /> 
-            <button onClick={switchUnits}>change units</button>
+            <button role={'unit-button'} onClick={switchUnits}>change units</button>
           </div>
         : <></>
       }
