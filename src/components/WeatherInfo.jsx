@@ -1,4 +1,18 @@
-function WeatherInfo({ weatherInfo, detail, unit }) {
+import React from 'react';
+
+function WeatherInfo({ weatherInfo, detail }) {
+  const [toggleUnit, setToggleUnit] = React.useState('Metric');
+
+  const switchUnits = () => {
+    setToggleUnit((prev) => {
+      if (prev === 'Metric') {
+        return 'Imperial'
+      } else {
+        return 'Metric'
+      }
+    });
+  }
+
 
   const weatherStatement = () => {
     let keyWords = [];
@@ -25,7 +39,10 @@ function WeatherInfo({ weatherInfo, detail, unit }) {
       {weatherStatement()}
       {
         (detail) 
-        ? <DetailedWeatherInfo weatherInfo={weatherInfo} unit={unit} /> 
+        ? <div>
+            <DetailedWeatherInfo weatherInfo={weatherInfo} unit={toggleUnit} /> 
+            <button onClick={switchUnits}>change units</button>
+          </div>
         : <></>
       }
       

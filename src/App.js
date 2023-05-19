@@ -18,8 +18,8 @@ function App() {
       description: null
     }
   )
-
   const [locationDetails, setLocationDetails] = React.useState();
+  const [toggleDetails, setToggleDetails] = React.useState(false);
 
   React.useEffect(() => {
     if (accessCoords.lat == null && accessCoords.lng == null) {
@@ -78,6 +78,10 @@ function App() {
     });
   };
 
+  const switchDetail = () => {
+    setToggleDetails(prev => !prev);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -86,7 +90,11 @@ function App() {
           : <LocationInfo locationInfo={locationDetails} />}
         {(weatherDetails.precipitation == null)
           ? <div></div>
-          : <WeatherInfo weatherInfo={weatherDetails} />}
+          : <div>
+            <WeatherInfo weatherInfo={weatherDetails} detail={toggleDetails} />
+            <button onClick={switchDetail}>show more</button>
+          </div>
+        }
         <button onClick={getLocation}>click</button>
       </header>
     </div>
