@@ -141,7 +141,7 @@ describe('Detailed Mode Content Tests', () => {
 
   it('Test content not raining', async () => {
     const mockWeatherInfo = {
-      precipitation: true,
+      precipitation: false,
       temperature: {
         Imperial: {
           Value: 50,
